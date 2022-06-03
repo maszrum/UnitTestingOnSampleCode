@@ -1,0 +1,1 @@
+https://4programmers.net/Forum/Inzynieria_oprogramowania/361341-testowanie_jednostkowe_na_przykladowym_kodzie

@@ -16,21 +16,21 @@ public class SomeWork
     {
         var operation = new ThirdPartyOperation(_logger);
         
-        var first = await operation.DoWithOptionalBackupConnection(
+        var first = operation.DoWithOptionalBackupConnection(
             mainClient, 
             backupClient, 
             client => client.GetData("First"));
         
-        var second = await operation.DoWithOptionalBackupConnection(
+        var second = operation.DoWithOptionalBackupConnection(
             mainClient, 
             backupClient, 
             client => client.GetData("Second"));
         
-        var third = await operation.DoWithOptionalBackupConnection(
+        var third = operation.DoWithOptionalBackupConnection(
             mainClient, 
             backupClient, 
             client => client.GetData("Third"));
         
-        return first + second + third;
+        return await first + await second + await third;
     }
 }

@@ -1,32 +1,29 @@
-﻿using Microsoft.Extensions.Logging;
-using RandomSolution.ThirdPartyCode;
+﻿using RandomSolution.ThirdPartyCode;
 
 namespace RandomSolution.AfterChanges;
 
 public class SomeWork
 {
-    private readonly ILogger _logger;
+    private readonly IThirdPartyOperation _thirdPartyOperation;
 
-    public SomeWork(ILogger logger)
+    public SomeWork(IThirdPartyOperation thirdPartyOperation)
     {
-        _logger = logger;
+        _thirdPartyOperation = thirdPartyOperation;
     }
 
     public async Task<string> Do(IClient mainClient, IClient backupClient)
     {
-        var operation = new ThirdPartyOperation(_logger);
-        
-        var first = operation.DoWithOptionalBackupConnection(
+        var first = _thirdPartyOperation.DoWithOptionalBackupConnection(
             mainClient, 
             backupClient, 
             client => client.GetData("First"));
         
-        var second = operation.DoWithOptionalBackupConnection(
+        var second = _thirdPartyOperation.DoWithOptionalBackupConnection(
             mainClient, 
             backupClient, 
             client => client.GetData("Second"));
         
-        var third = operation.DoWithOptionalBackupConnection(
+        var third = _thirdPartyOperation.DoWithOptionalBackupConnection(
             mainClient, 
             backupClient, 
             client => client.GetData("Third"));

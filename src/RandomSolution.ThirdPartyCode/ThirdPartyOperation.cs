@@ -2,7 +2,7 @@
 
 namespace RandomSolution.ThirdPartyCode;
 
-public class ThirdPartyOperation
+public class ThirdPartyOperation : IThirdPartyOperation
 {
     private readonly ILogger _logger;
 
@@ -16,6 +16,10 @@ public class ThirdPartyOperation
         TClient backupClient, 
         Func<TClient, T> action)
     {
+        Thread.Sleep(30_000);
+        // here should be some code that we don't know
+        // it is heavy and computationally demanding
+        
         try
         {
             return action(mainClient);
